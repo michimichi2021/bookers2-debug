@@ -10,4 +10,21 @@ class Book < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+  
+  def self.looks(how,word)
+		
+	    if how == "1"
+	      @books = Book.where('title LIKE(?) or body LIKE(?)' ,"#{word}%","#{word}%")
+	    elsif how == "2"
+	      @books = Book.where('title LIKE(?) or body LIKE(?)' ,"%#{word}","%#{word}")
+	    elsif how == "0"
+	      @books = Book.where('title LIKE(?) or body LIKE(?)' ,"#{word}","#{word}")
+	    elsif how == "3"
+	      @books = Book.where('title LIKE(?) or body LIKE(?)' ,"%#{word}%","%#{word}%")
+	    else
+	      @books = Book.all
+	    end
+	    
+  end
+	 
 end

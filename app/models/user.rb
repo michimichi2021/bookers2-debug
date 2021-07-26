@@ -29,6 +29,25 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
+  
+  	  
+  def self.looks(how,word)
+  		
+  	    if how == "1"
+  	      @users = User.where('name LIKE(?) or introduction LIKE(?)' ,"#{word}%","#{word}%")
+  	    elsif how == "2"
+  	      @users = User.where('name LIKE(?) or introduction LIKE(?)' ,"%#{word}","%#{word}")
+  	    elsif how == "0"
+  	      @users = User.where('name LIKE(?) or introduction LIKE(?)' ,"#{word}","#{word}")
+  	    elsif how == "3"
+  	      @users = User.where('name LIKE(?) or introduction LIKE(?)' ,"%#{word}%","%#{word}%")
+  	    else
+  	      @users = User.all
+  	    end
+  	    
+  end
+  	 
+  
 end
 
 

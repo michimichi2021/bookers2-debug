@@ -10,11 +10,28 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
+
+   　<% if user_signed_in? %>
+      <div class='container mt-2'>
+      <div class='row'>
+        <div class="d-flex align-items-center justify-content-center">
+        <%= form_with(url:searches_search_path,method: :get,local: true) do |f| %>
+        <%= f.text_field :word %>
+        <%= f.select :range,options_for_select([['User'], ['Book']]) %>
+        <%= f.select :how,options_for_select({完全一致: :"0",前方一致: :"1",後方一致: :"2",部分一致: :"3" })%>
+        <%= f.submit '検索'%>
+        <% end %>
+        </div>
+      </div>
+      </div>
+      <% end %>
+
+
       <main>
         <p id="notice"><%= notice %></p>
         <%= yield %>
       </main>
     <%= render 'layouts/footer' %>
-    
+
   </body>
 </html>
