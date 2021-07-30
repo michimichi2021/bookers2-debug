@@ -1,0 +1,5 @@
+$('#count_<%= @book.id %>').html("<%= j(render partial: 'book_comments/comment.count', locals: {book: @book}) %>");
+$("#comment_create").html("<%= j(render partial: 'book_comments/index', locals: { book_comments: @book_comment.book.book_comments }) %>");
+$("#comment_form").html("<%= j(render partial: 'book_comments/form', locals: { book_comment: @book_comment, book: @book }) %>");
+$("textarea").val('');
+

@@ -1,0 +1,8 @@
+
+<%= form_with(model: [book, book_comment] ) do |f| %>
+    <%= f.text_area :comment, class: "input-mysize", size: "60x5" %>
+    <div>
+    <%= f.submit "送信", class: "btn btn-outline-dark comment-submit float-right" %>
+    </div>
+<% end %>
+
