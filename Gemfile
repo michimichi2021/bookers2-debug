@@ -71,3 +71,5 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'bootstrap'
 
 gem 'webpacker'
+
+gem 'impressionist', '~>1.6.1'
