@@ -4,26 +4,13 @@
       <h2>User info</h2>
       <%= render 'info', user: @user %>
 
-    <% unless @user.id == current_user.id %>
-      <% if (current_user.following? @user) && (@user.following? current_user) %>
-        <% if @isRoom == true %>
-          <p class="user-show-room"><a href="/rooms/#{@room.id}" class="btn btn-primary btn-lg">チャットへ</a>
-
-
-        <% else %>
-       <%= form_with model: @room do |f| %>
+      <!-- current_userと@userが一致していない場合に`Begin Chat`を表示 -->
       
-          <%= fields_for @entry do |e| %>
-            <%= e.hidden_field :user_id, :value=>@user.id %>
-          <% end %>
-
-
-          <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat "%>
-
-        <% end %>
-        <% end %>
-      <% end %>
-    <% end %>
+      <% if current_user != @user %>
+        <% if (current_user.following? @user) && (@user.following? current_user)  %>
+          <%= link_to 'Chatを始める', message_path(@user.id) %>
+        <% end %>  
+      <% end %> 
 
 
 

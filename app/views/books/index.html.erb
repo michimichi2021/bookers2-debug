@@ -10,6 +10,54 @@
        <%= render 'layouts/errors', obj: @book %>
       <h2>Books</h2>
       <%= render 'index', books: @books ,book: @book,user: @user,ranks: @ranks %>
+      
+      <h3>7日分の投稿数</h3>
+      <table class='table table-hover table-inverse'>
+        <thead>
+        <tr>
+          <td>6日前</td>
+          <td>5日前</td>
+          <td>4日前</td>
+          <td>3日前</td>
+          <td>2日前</td>
+          <td>1日前</td>
+          <td>今日</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><%= @this_week_book_6days_ago_book.count %></td>
+          <td><%= @this_week_book_5days_ago_book.count %></td>
+          <td><%= @this_week_book_4days_ago_book.count%></td>
+          <td><%= @this_week_book_3days_ago_book.count%></td>
+          <td><%= @this_week_book_2days_ago_book.count %></td>
+          <td><%= @yesterday_book.count %></td>
+          <td><%= @today_book.count %></td>
+        </tr>
+        </tbody>
+      </table>
+      
+      <p>7日間投稿数の比較</p>
+      
+      <canvas id="myChart" width="500" height="400"> </canvas>
+
+      <script> 
+          var ctx = document.getElementById("myChart").getContext('2d');
+          var myChart = new Chart(ctx, {
+              type: 'bar',                    
+              data: {
+                  labels: <%= @chartlabels %>,  
+                  datasets: [{
+                      label: "投稿数",
+                      data: <%= @chartdatas %>, 
+                      backgroundColor: 'rgba(255, 80, 120, 1.0)',
+                      borderColor: 'rgba(255, 80, 120, 1.0)',
+                      fill: false
+                  }]
+              },
+          });
+      </script>
+      
     </div>
   </div>
 </div>
