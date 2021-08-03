@@ -1,5 +1,18 @@
 class BooksController < ApplicationController
-
+    
+    
+    
+    def create
+      @book = Book.new(book_params)
+      @book.user_id = current_user.id
+      if @book.save
+        redirect_to book_path(@book), notice: "You have created book successfully."
+      else
+        @books = Book.all
+        render 'index'
+      end
+    end
+    
     def show
 
       @book = Book.find(params[:id])
@@ -9,16 +22,31 @@ class BooksController < ApplicationController
       @book_comment = BookComment.new
       @book_comment.user=current_user
       @book_comments = @book.book_comments
+      
+     
+    
+      @see = See.find_by(ip: request.remote_ip) 
+        if @see 
+        @book = Book.find(params[:id])
+        else 
+        @book = Book.find(params[:id])
+          See.create(ip: request.remote_ip)
+        end
+    
 
     end
 
 
       def index
       @books = Book.all
+      
+      
       @book=Book.new
+    
+      
       @ranks=Book.last_week
-
-
+      
+      
 
       @today_book =  @books.created_today
       @yesterday_book = @books.created_yesterday
@@ -44,20 +72,20 @@ class BooksController < ApplicationController
       @chartdatas = @book_by_day.map(&:second)
       # 日別投稿数の配列を格納。
       # => [23, 20, 3, 0, 12, 2]
-
+      
+      
+        @see = See.find_by(ip: request.remote_ip) 
+          if @see 
+            @books = Book.all
+          else 
+            @books = Book.all
+            See.create(ip: request.remote_ip)
+          end
+      
 
       end
 
-    def create
-      @book = Book.new(book_params)
-      @book.user_id = current_user.id
-      if @book.save
-        redirect_to book_path(@book), notice: "You have created book successfully."
-      else
-        @books = Book.all
-        render 'index'
-      end
-    end
+    
 
     def edit
       @book = Book.find(params[:id])

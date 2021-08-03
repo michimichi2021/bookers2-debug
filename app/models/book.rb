@@ -43,4 +43,7 @@ class Book < ApplicationRecord
 	scope :created_3days_ago, -> { where(created_at: 3.day.ago.all_day) } 
 	scope :created_2days_ago, -> { where(created_at: 2.day.ago.all_day) } 
 	
+	
+	
+	
 end

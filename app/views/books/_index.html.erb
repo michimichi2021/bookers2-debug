@@ -6,6 +6,7 @@
       <th>Opinion</th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -31,6 +32,8 @@
         <td>
         <p>コメント数：<%= book.book_comments.count %></p>
         </td>
+        
+        <td>閲覧数:<%= See.count %></td>
        
         <% end %>
       </tr>

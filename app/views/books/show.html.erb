@@ -36,6 +36,10 @@
               <%= render 'book_comments/comment.count', book: @book %>
              </div>
           </td>
+          
+          <td>
+            <p>閲覧数:<%= See.count %></p>
+          </td>
 
           <% if @book.user==current_user %>
           <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
