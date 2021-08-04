@@ -33,7 +33,9 @@ class BooksController < ApplicationController
           See.create(ip: request.remote_ip)
         end
     
-
+      
+      
+      
     end
 
 

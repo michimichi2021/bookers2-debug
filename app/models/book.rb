@@ -44,6 +44,6 @@ class Book < ApplicationRecord
 	scope :created_2days_ago, -> { where(created_at: 2.day.ago.all_day) } 
 	
 	
-	
+
 	
 end

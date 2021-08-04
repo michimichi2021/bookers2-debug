@@ -49,6 +49,9 @@ class User < ApplicationRecord
   
   has_many :entries,dependent: :destroy
   has_many :messages, dependent: :destroy
+  
+  has_many :group_users   #ここ！
+  has_many :groups, through: :group_users
   	 
   
 end

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'home/about' => 'homes#about'
 
+  get 'user/search_book', to: 'users#search_book'
   resources :users,only: [:show,:index,:edit,:update] do
     resource :relationships,only: [:create, :destroy]
     get 'followings' => 'relationships#followings'
@@ -23,6 +24,6 @@ Rails.application.routes.draw do
   resources :messages,only:[:create]
   resources :rooms,only:[:create, :show]
   
-  
+  resources :groups, except: [:destroy]
 
 end
