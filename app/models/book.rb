@@ -44,6 +44,17 @@ class Book < ApplicationRecord
 	scope :created_2days_ago, -> { where(created_at: 2.day.ago.all_day) } 
 	
 	
+	validates :rate, presence: true
+  validates :rate, numericality: {
+    # only_integer: true,
+    less_than_or_equal_to: 5,
+    greater_than_or_equal_to: 1,
+  }
+  
+   validates :param5, :numericality => { :less_than_or_equal_to => 5}
+   # 数字が３以下であるか
+   validates :param5, :numericality => { :greater_than_or_equal_to => 1 }
+   # 数字が１以上であるか
 
 	
 end

@@ -13,6 +13,8 @@ class BooksController < ApplicationController
       end
     end
     
+    
+    
     def show
 
       @book = Book.find(params[:id])
@@ -46,7 +48,7 @@ class BooksController < ApplicationController
       @book=Book.new
     
       
-      @ranks=Book.last_week
+      @ranks=Book.created_this_week
       
       
 
@@ -110,7 +112,7 @@ class BooksController < ApplicationController
     private
 
     def book_params
-      params.require(:book).permit(:title, :body)
+      params.require(:book).permit(:title, :body, :rate)
 
     end
 

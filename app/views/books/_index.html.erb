@@ -7,6 +7,7 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -34,9 +35,32 @@
         </td>
         
         <td>閲覧数:<%= See.count %></td>
+        
        
         <% end %>
+        
+        <td>
+          <div id="star-rate-<%= book.id %>"></div>
+          <script>
+            // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
+          $('#star-rate-<%= book.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            // 読み込みだけで入力できない
+            readOnly: true,
+            score: <%= book.rate %>,
+          });
+          </script>
+            </td>
+         
+        
       </tr>
-    <% end %>
+    <% end %>  
+    
   </tbody>
 </table>
+
+ 

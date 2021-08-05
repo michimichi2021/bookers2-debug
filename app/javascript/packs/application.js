@@ -22,5 +22,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-// ↓ 追記
-require('jquery')
+//=require('jquery')
+//= require jquery_ujs　 
+

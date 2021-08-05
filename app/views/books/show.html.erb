@@ -37,6 +37,26 @@
              </div>
           </td>
           
+            <td>
+             <div id="form_star"></div>
+              <script>
+                // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
+              $('#form_star').raty({
+                size: 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                // 読み込みだけで入力できない
+                readOnly: true,
+                score: <%= @book.rate %>,
+              });
+              </script>
+            </td>
+          
+        
+          
+        
           <td>
             <p>閲覧数:<%= See.count %></p>
           </td>
