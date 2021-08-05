@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers'
   end
 
+  get 'book/evaluation_rank' => 'books#evaluation_rank'
+  get 'book/new_rank' => 'books#new_rank'
   resources :books do
    resources :book_comments, only: [:create, :destroy]
    resource :favorites,only:[:create,:destroy]

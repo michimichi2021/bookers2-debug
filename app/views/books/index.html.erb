@@ -9,6 +9,7 @@
     <div class='col-md-8 offset-md-1'>
        <%= render 'layouts/errors', obj: @book %>
       <h2>Books</h2>
+      <%= link_to "新しい順",book_new_rank_path %>|<%= link_to "評価の高い順", book_evaluation_rank_path %>
       <%= render 'index', books: @books ,book: @book,user: @user,ranks: @ranks %>
       
       <h3>7日分の投稿数</h3>

@@ -108,6 +108,29 @@ class BooksController < ApplicationController
       @book.destroy
       redirect_to books_path
     end
+    
+    def new_rank
+      @books = Book.order('id DESC')
+      @book=Book.new
+      
+      
+
+      
+        @see = See.find_by(ip: request.remote_ip) 
+          if @see 
+            @books = Book.all
+          else 
+            @books = Book.all
+            See.create(ip: request.remote_ip)
+          end
+      
+    end
+    
+    def evaluation_rank
+      @books = Book.order('rate DESC')
+      @book=Book.new
+     
+    end
 
     private
 
