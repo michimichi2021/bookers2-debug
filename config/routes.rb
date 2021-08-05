@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers'
   end
 
+  get "search_book" => "books#search_book"
   get 'book/evaluation_rank' => 'books#evaluation_rank'
   get 'book/new_rank' => 'books#new_rank'
   resources :books do

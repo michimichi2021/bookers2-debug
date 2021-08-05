@@ -28,6 +28,10 @@ class Book < ApplicationRecord
 	    
   end
   
+  def self.search(keyword)
+   Book.where(['category LIKE ?', "#{keyword}"])
+  end
+  
 	def self.last_week # メソッド名は何でも良いです
 	  Book.joins(:favorites).where(favorites:{created_at:0.days.ago.prev_week..0.days.ago.prev_week(:sunday)}).group(:id).order("count(*) desc")
 	end
@@ -51,10 +55,6 @@ class Book < ApplicationRecord
     greater_than_or_equal_to: 1,
   }
   
-   validates :param5, :numericality => { :less_than_or_equal_to => 5}
-   # 数字が３以下であるか
-   validates :param5, :numericality => { :greater_than_or_equal_to => 1 }
-   # 数字が１以上であるか
-
+  
 	
 end

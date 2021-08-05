@@ -131,11 +131,21 @@ class BooksController < ApplicationController
       @book=Book.new
      
     end
+    
+    def search_book
+     @book=Book.new
+     @books=Book.search(params[:keyword])
+     @user=@book.user
+     
+    
+    
+      
+    end
 
     private
 
     def book_params
-      params.require(:book).permit(:title, :body, :rate)
+      params.require(:book).permit(:title, :body, :rate, :category)
 
     end
 
