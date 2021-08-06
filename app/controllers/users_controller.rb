@@ -40,7 +40,8 @@ class UsersController < ApplicationController
     end
   end
   
-  def search_book
+  def book_count
+     
     @user=User.find(params[:id])
     @books=@user.books
     create_at=params[:created_at]

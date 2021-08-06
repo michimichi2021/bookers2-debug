@@ -1,0 +1,2 @@
+$('#book_count_<%= @book.id %>').html("<%= j(render partial: 'users/search_book', locals: {search_book: @search_book}) %>");
+$('#book_form').html("<%= j(render partial: 'users/form', locals: {user: @user}) %>");

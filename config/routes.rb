@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'home/about' => 'homes#about'
 
-  get 'user/search_book', to: 'users#search_book'
+  get 'user/book_count', to: 'users#book_count'
   resources :users,only: [:show,:index,:edit,:update] do
     resource :relationships,only: [:create, :destroy]
     get 'followings' => 'relationships#followings'
