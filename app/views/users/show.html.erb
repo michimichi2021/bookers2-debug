@@ -126,16 +126,20 @@
       </tbody>
     </table>
     
-    <%= form_with(url: user_book_count_path, method: :get, local: true) do |f| %>
-          <%= f.date_field :created_at %>
-          <%= submit_tag '検索', :name => nil %>
+      
+      
+    <%= form_with url: user_search_path(@user), method: :get do |f| %>
+      <%= f.date_field :created_at %>
+      <%= f.submit '検索', class: 'btn btn-primary'  %>
     <% end %>
     
-    
-    <div id="book_count_<%= @book.id %>">
-
-        <%= render partial: 'users/search_book', locals: { search_book: @search_book } %>
-      </div>
+    <div id="search_result">
+      <% if @search_book.present? %>
+        <%= render 'search', search_book: @search_book %>
+      <% end %>
+    </div>
+          
+      
     
     </div>
   </div>

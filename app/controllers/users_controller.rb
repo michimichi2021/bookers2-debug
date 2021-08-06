@@ -6,6 +6,8 @@ class UsersController < ApplicationController
     @books = @user.books
     @book = Book.new
     
+    
+    
     @today_book =  @books.created_today
     @yesterday_book = @books.created_yesterday
     @this_week_book = @books.created_this_week
@@ -40,17 +42,16 @@ class UsersController < ApplicationController
     end
   end
   
-  def book_count
-     
-    @user=User.find(params[:id])
-    @books=@user.books
-    create_at=params[:created_at]
-    if create_at==""
-      @search_book="日付けを入力してください"
-      
-    else
-      @search_book=@books.where("created_at LIKE?","#{created_at}%").count
-    end
+  def search
+      @user=User.find(params[:user_id])
+      @books=@user.books
+      @book=Book.new
+      if params[:created_at] == ""
+        @search_book ="日付を選択してください"
+      else
+        create_at = params[:created_at]
+        @search_book = @books.where(['created_at LIKE ?',"#{create_at}%"]).count
+      end
   end
 
 

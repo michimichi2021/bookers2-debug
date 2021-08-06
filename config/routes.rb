@@ -8,11 +8,12 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'home/about' => 'homes#about'
 
-  get 'user/book_count', to: 'users#book_count'
+
   resources :users,only: [:show,:index,:edit,:update] do
     resource :relationships,only: [:create, :destroy]
     get 'followings' => 'relationships#followings'
     get 'followers' => 'relationships#followers'
+    get "search", to: "users#search"
   end
 
   get "search_book" => "books#search_book"
